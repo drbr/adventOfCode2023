@@ -27,6 +27,7 @@ function bigger(a, b) {
 }
 
 let total = 0;
+let totalPower = 0;
 for (const line of lines) {
   const { gameId, experiments } = parseGame(line);
 
@@ -36,9 +37,13 @@ for (const line of lines) {
     return gameHasAtLeastTheseCounts[k] <= GIVEN_CUBES[k];
   });
 
+  const power = Object.values(gameHasAtLeastTheseCounts).reduce((x, v) => x * v, 1);
+  totalPower += power;
+
   if (gameIsPossible) {
     total += gameId;
   }
 }
 
-console.log(total);
+console.log('Part 1: ' + total);
+console.log('Part 2: ' + totalPower);
