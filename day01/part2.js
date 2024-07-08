@@ -7,10 +7,11 @@ const lines = fileText.split('\n');
 function getDigits(line) {
   // console.log(line);
 
-  // Use zero-width lookahead as described at:
+  // Use zero-width lookahead with capture group as described at:
   // https://stackoverflow.com/questions/20833295/how-can-i-match-overlapping-strings-with-regex
   matches = Array.from(
     line.matchAll(/(?=(zero|one|two|three|four|five|six|seven|eight|nine|0|1|2|3|4|5|6|7|8|9))/g),
+    // Extract the first captured group from each match
     (x) => x[1]
   );
   // console.log(matches);
